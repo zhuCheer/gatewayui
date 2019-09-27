@@ -41,25 +41,31 @@ $router->group(['middleware' => 'session'], function () use ($router) {
             'as' => 'admin.siteInfo', 'uses' => 'Admin@siteInfo'
         ]);
 
-        $router->post('/site_save', [
-            'as' => 'admin.siteSave', 'uses' => 'Admin@siteSave'
-        ]);
-        $router->post('/site_del', [
-            'as' => 'admin.siteRemove', 'uses' => 'Admin@siteRemove'
-        ]);
-
 
         $router->get('/nodes', [
             'as' => 'admin.nodes', 'uses' => 'Admin@setNodes'
         ]);
 
-        $router->post('/node_save', [
-            'as' => 'admin.saveNode', 'uses' => 'Admin@saveNode'
-        ]);
 
-        $router->post('/node_del', [
-            'as' => 'admin.delNode', 'uses' => 'Admin@delNode'
-        ]);
+        $router->group(['middleware'=>'proxyStatus'], function () use ($router) {
+            $router->post('/site_save', [
+                'as' => 'admin.siteSave', 'uses' => 'Admin@siteSave'
+            ]);
+            $router->post('/site_del', [
+                'as' => 'admin.siteRemove', 'uses' => 'Admin@siteRemove'
+            ]);
+
+            $router->post('/node_save', [
+                'as' => 'admin.saveNode', 'uses' => 'Admin@saveNode'
+            ]);
+
+            $router->post('/node_del', [
+                'as' => 'admin.delNode', 'uses' => 'Admin@delNode'
+            ]);
+
+        });
+
+
     });
 
 

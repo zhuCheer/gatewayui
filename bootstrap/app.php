@@ -69,6 +69,7 @@ $app->configure('menus');
 $app->routeMiddleware([
  'session' => Illuminate\Session\Middleware\StartSession::class,
  'login'=> \App\Http\Middleware\Login::class,
+ 'proxyStatus'=> \App\Http\Middleware\ProxyStatus::class,
 ]);
 
 

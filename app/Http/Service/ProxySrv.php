@@ -24,6 +24,15 @@ class ProxySrv
         return false;
     }
 
+    /**
+     * 状态查询
+     */
+    public function pingStatus(){
+        $url = $this->getApiUrl('ping');
+        $ret = $this->curlFun($url);
+        return $ret;
+    }
+
 
     /**
      * 注册站点

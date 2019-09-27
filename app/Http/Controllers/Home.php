@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Service\ProxySrv;
 use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Http\Request;
 
@@ -74,7 +75,13 @@ class Home extends Controller
      */
     public function welcome(){
 
-        return view('admin.welcome');
+        $proxySrv = new ProxySrv();
+        $pingStatus = $proxySrv->pingStatus();
+        $viewData = [
+            'pingStatus'=>$pingStatus
+        ];
+
+        return view('admin.welcome', $viewData);
     }
 
 

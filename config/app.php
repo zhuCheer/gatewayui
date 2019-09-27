@@ -10,6 +10,7 @@ return [
     'proxyServer'=>[
         'urlPre'=>'http://192.168.137.1:5001',
         'apis'=>[
+            'ping' => '/ping',
             'regist' => '/api/regist',
             'insertone' => '/api/insertone',
             'removenoe' => '/api/removenoe',
